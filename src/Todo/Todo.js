@@ -20,7 +20,6 @@ function Todo() {
                     user => (
                         <p key={user.id}>
                             <span>{user.name}</span>
-                            <button>COMPLETE</button>
                             <button>DELETE</button>
                         </p>
 
