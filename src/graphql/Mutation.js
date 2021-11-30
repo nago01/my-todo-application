@@ -8,13 +8,13 @@ mutation deleteUser($id : ID!) {
 }
 `
 const ADD_ITEM = gql`
-mutation {
-    createUser (data: {
-      name: $name,
-      email: $email
-    }){
+mutation createUser ($name: String! $email: String!){
+      createUser (data: {
+        name: $name
+        email: $email
+      }){
       name
-    }
+      }
   }
 `
 export {DELETE_ITEM , ADD_ITEM}
