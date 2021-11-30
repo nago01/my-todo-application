@@ -13,8 +13,8 @@ function Todo() {
     const {data , loading , error , refetch} = useQuery(BACKEND_QUERY);
     const [deleteItem] = useMutation(DELETE_ITEM);
     // const [addItem] = useMutation(ADD_ITEM)
-    const [newItem,setItem] =useState("");
-    const [detail,setDetail] = useState("");
+    const [name,setItem] =useState("");
+    const [email,setDetail] = useState("");
     if(loading) return <div>Loading Data</div>
 
     // const {loading,data,error} = useQuery(BACKEND_QUERY)
@@ -40,7 +40,7 @@ function Todo() {
                 onChange = {
                     (e)=> {
                       setItem(e.target.value);
-                      console.log({newItem})
+                      console.log({name})
                     }
                 }
                 />
@@ -49,14 +49,14 @@ function Todo() {
                 onChange = {
                     (e)=> {
                       setDetail(e.target.value);
-                      console.log({detail})
+                      console.log({email})
                     }
                 }
                 />
                 
 
                 <button onClick={(e)=>{
-                    addItem({variables: {newItem,detail}})
+                    addItem({variables: {name,email}})
                 }} > ADD </button>
             </div>
             <div>
