@@ -7,4 +7,14 @@ mutation deleteUser($id : ID!) {
     }
 }
 `
-export {DELETE_ITEM}
+const ADD_ITEM = gql`
+mutation {
+    createUser (data: {
+      name: $name,
+      email: $email
+    }){
+      name
+    }
+  }
+`
+export {DELETE_ITEM , ADD_ITEM}

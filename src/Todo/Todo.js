@@ -1,10 +1,13 @@
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
-import React from 'react';
+import React, { useState } from 'react';
 import { BACKEND_QUERY } from '../graphql/Queries';
-import {DELETE_ITEM} from '../graphql/Mutation';
+import {DELETE_ITEM , ADD_ITEM} from '../graphql/Mutation';
+
 function Todo() {
     const {data , loading , error , refetch} = useQuery(BACKEND_QUERY);
     const [deleteItem] = useMutation(DELETE_ITEM);
+    const [addItem] = useMutation(ADD_ITEM)
+    const [newItem,setItem] =useState("");
     if(loading) return <div>Loading Data</div>
 
     // const {loading,data,error} = useQuery(BACKEND_QUERY)
@@ -18,13 +21,30 @@ function Todo() {
         )
         refetch()
     }
+
+    const addItemFun = (id) => {
+        addItem(
+            {
+                variable: {
+                    id
+                }
+            }
+        )
+    }
+
     return (
         <div>
             <div>
                 <h1>ADD YOUR TASK</h1>
-                <input></input>
+                <input type="text"
+                onChange = {
+                    (e)=> {
+                      setItem(e.target.value);
+                    }
+                }
+                />
                 
-                <button> ADD </button>
+                <button onClick={()=> addItemFun(newItem)}> ADD </button>
             </div>
             <div>
             {
