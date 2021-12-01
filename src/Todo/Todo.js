@@ -35,7 +35,7 @@ function Todo() {
     return (
         <div>
             <div>
-                <h1>ADD YOUR TASK</h1>
+                <h1>ADD YOUR TASK and DETAILS</h1>
                 <input type="text"
                 onChange = {
                     (e)=> {
